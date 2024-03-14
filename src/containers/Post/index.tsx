@@ -17,15 +17,18 @@ export const Post = ({ post }: PostProps) => {
     <>
       <Header />
       <MainContainer>
-        <Heading>{post.title}</Heading>
-        <PostCover coverUrl={post.cover.data.attributes.url} alt={post.title} />
+        <Heading>{post.attributes.title}</Heading>
+        <PostCover
+          coverUrl={post.attributes.cover.data.attributes.url}
+          alt={post.attributes.title}
+        />
         <PostDetails
-          author={post.author.data.attributes.name}
-          category={post.category.data.attributes.name}
-          date={post.createdAt}
+          author={post.attributes.author.data.attributes.name}
+          category={post.attributes.category.data.attributes.name}
+          date={post.attributes.createdAt}
         />
         <PostContainer content={post.content}></PostContainer>
-        <Comments slug={post.slug} title={post.title} />
+        <Comments slug={post.attributes.slug} title={post.attributes.title} />
       </MainContainer>
       <Footer />
     </>

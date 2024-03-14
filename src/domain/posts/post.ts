@@ -40,20 +40,40 @@ export type PostCreatedBy = {
   username: null;
 };
 
-export type PostCoverFormat = {
+export type PostCoverFormatsDataThumbnail = {
   ext: string;
   url: string;
   hash: string;
   mime: string;
   name: string;
-  path: null;
+  path: string;
   size: number;
   width: number;
   height: number;
+};
+
+export type PostCoverFormatsData = {
+  thumbnail: PostCoverFormatsDataThumbnail;
+  small: PostCoverFormatsDataThumbnail;
+  medium: PostCoverFormatsDataThumbnail;
+  large: PostCoverFormatsDataThumbnail;
+};
+
+export type PostCoverFormat = {
+  name: string;
+  width: number;
+  height: number;
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  path: null;
+  size: number;
   provider_metadata: {
     public_id: string;
     resource_type: string;
   };
+  formats: PostCoverFormatsData;
 };
 
 export type PostCoverData = {
@@ -72,25 +92,31 @@ export type PostCover = PostCoverFormat & {
   updated_by: number;
   created_at: string;
   updated_at: string;
-  formats: {
-    thumbnail: PostCoverFormat;
-    small: PostCoverFormat;
-    medium: PostCoverFormat;
-    large: PostCoverFormat;
-  };
+};
+
+export type PostContentFormatChildren = {
+  text: string;
+};
+
+export type PostDataContent = {
+  type: string;
+  children: PostContentFormatChildren[];
+};
+
+export type PostDataFormat = {
+  title: string;
+  content: PostDataContent[];
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  cover: PostCover;
+  author: PostAuthor;
+  category: PostCategory;
 };
 
 export type PostData = {
   id: PostID;
-  title: string;
+  attributes: PostDataFormat;
   content: string;
-  slug: string;
-  author: PostAuthor;
-  category: PostCategory;
-  // created_by: PostCreatedBy;
-  // updated_by: PostCreatedBy;
-  publishedAt: string;
-  createdAt: string;
-  updatedAt: string;
-  cover: PostCover;
 };

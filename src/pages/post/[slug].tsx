@@ -11,9 +11,6 @@ export type DynamicPostProps = {
 
 export const DynamicPost = ({ post }: DynamicPostProps) => {
   return <Post post={post} />;
-  // <>
-  //   <Markdown>{post.content}</Markdown>
-  // </>
 };
 
 export default DynamicPost;
@@ -21,11 +18,11 @@ export default DynamicPost;
 export const getStaticPaths: GetStaticPaths = async () => {
   const numberOfPosts = await countAllPosts();
   const posts = await getAllPosts(`pagination[limit]=${numberOfPosts}`);
-  console.log(
-    posts.map((post) => {
-      return post.attributes.slug;
-    }),
-  );
+  // console.log(
+  //   posts.map((post) => {
+  //     return post.attributes.slug;
+  //   }),
+  // );
   return {
     paths: posts.map((post) => {
       return {

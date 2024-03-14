@@ -18,8 +18,9 @@ export default function HomePage({ posts }: HomePageProps) {
         <Container>
           {posts.map((post) => (
             <>
-              {/* {console.log(post.attributes.cover.data.attributes.formats)} */}
+              {/* {console.log(post.attributes.cover.data.attributes)} */}
               <PostCard
+                key={post.id}
                 slug={post.attributes.slug}
                 title={post.attributes.title}
                 cover={

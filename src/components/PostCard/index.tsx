@@ -5,6 +5,7 @@ export type PostCardProps = {
   slug: string;
   title: string;
   cover: string;
+  children: React.ReactNode;
 };
 
 export const PostCard = ({ slug, title, cover }: PostCardProps) => {
